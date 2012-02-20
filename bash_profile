@@ -6,5 +6,6 @@ fi
 . ~/.dotfiles/bash_aliases
 . ~/.dotfiles/bash_options
 . ~/.dotfiles/osx
+. ~/.dotfiles/ruby
 
 eval "$(rbenv init -)"

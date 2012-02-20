@@ -1,0 +1,39 @@
+set background=light
+color solarized
+
+set cursorline
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>e :e $MYVIMRC<CR>
+nmap <silent> <leader>s :so $MYVIMRC<CR>
+
+" Run the spec for the current file
+" nmap <silent> <leader>r :!bundle exec rspec %<CR>
+nmap <silent> <leader>r :!bundle exec rspec --format d %<CR>
+
+" Paste from the system clipboard
+nmap <silent> <leader>p "*p<CR>
+
+map <C-j> 10j
+map <C-k> 10k
+
+" Remap the tab key to do autocompletion or indentation depending on the
+" context (from http://www.vim.org/tips/tip.php?tip_id=102)
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
