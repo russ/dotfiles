@@ -1,0 +1,11 @@
+# Load secret stuff that I don't want to share with the world on github :)
+if [ -e ~/.secrets ]; then
+  . ~/.secrets
+fi
+
+. ~/.dotfiles/bash/aliases
+. ~/.dotfiles/bash/options
+. ~/.dotfiles/bash/osx
+. ~/.dotfiles/bash/ruby
+
+eval "$(rbenv init -)"
