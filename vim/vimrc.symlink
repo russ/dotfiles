@@ -92,6 +92,7 @@ nmap <silent> <leader>w <C-w><C-w>
 
 " Paste from the system clipboard
 nmap <silent> <leader>p "*p<CR>
+nmap <silent> <leader>y "+yy<CR>
 
 " Fast Paging
 map <C-j> 10j

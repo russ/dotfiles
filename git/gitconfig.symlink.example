@@ -4,7 +4,7 @@
 
 [github]
 	user = russ
-  token = 4255ef59418bc0b7c84af83b79fab480
+  token = XXX
 
 [core]
   autocrlf = input
