@@ -28,6 +28,8 @@ vigrep () {
   vi $(grep -Rl $1 $2)
 }
 
+alias g='ack'
+
 # Alias Editing
 alias ae='vi ~/.dotfiles/bash_aliases' #alias edit
 alias ar='. ~/.dotfiles/bash_aliases'  #alias reload

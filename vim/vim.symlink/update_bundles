@@ -24,7 +24,8 @@ git_bundles = [
   "git://github.com/tpope/vim-vividchalk.git",
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/rphillips/vim-zoomwin.git",
-  "git://github.com/Lokaltog/vim-powerline.git",
+  # "git://github.com/Lokaltog/vim-powerline.git",
+  "git://github.com/skwp/vim-powerline.git::develop",
   "git://github.com/tpope/vim-commentary.git",
   "git://github.com/wincent/Command-T.git",
   "git://github.com/altercation/vim-colors-solarized.git",
@@ -32,7 +33,9 @@ git_bundles = [
   "git://github.com/russ/rtf-highlight.git",
   "git://github.com/mattn/webapi-vim.git",
   "git://github.com/mattn/gist-vim.git::use_api",
-  "git://github.com/tpope/vim-endwise.git"
+  "git://github.com/tpope/vim-endwise.git",
+  "git://github.com/kana/vim-smartinput.git",
+  "git://github.com/digitaltoad/vim-jade.git"
 ]
 
 require 'fileutils'
