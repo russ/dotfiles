@@ -18,7 +18,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool false
 
 # Disable menu bar transparency
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
 
 # Show remaining battery time; hide percentage
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
@@ -159,3 +159,6 @@ chflags nohidden ~/Library
 #unset file
 
 # Kill affected applications
+
+# Allow all applications to open.
+defaults write com.apple.LaunchServices LSQuarantine -bool false 

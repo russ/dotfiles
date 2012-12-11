@@ -1,7 +1,9 @@
+alias c='clear'
+alias h='history'
+
 # git/hub
 alias git='hub'
 alias g='hub'
-alias h='hub'
 
 # PS
 alias psg="ps aux | grep $1"
@@ -9,6 +11,7 @@ alias psg="ps aux | grep $1"
 # Better Vim
 alias vim='mvim -v'
 alias vi='vim'
+alias v='vim'
 
 # Moving around
 alias ..='cd ..'
@@ -25,7 +28,11 @@ alias lsg='ll | grep'
 
 # edit all files that match
 vigrep () {
-  vi $(grep -Rl $1 $2)
+  vi $(grep -Ril $1 $2)
+}
+
+pretty_json () {
+  curl $1 | python -mjson.tool
 }
 
 alias g='ack'
@@ -61,9 +68,6 @@ alias k9='kill -9'
 # This trick makes sudo understand all my aliases
 alias sudo='sudo '
 
-# Vagrant
-alias v="vagrant"
-
 # Bundler
 alias b="bundle exec"
 
@@ -73,4 +77,5 @@ alias rc="rails console"
 alias rs="rails server"
 
 # Misc
-alias t="vim ~/Dropbox/tasks.txt"
+# alias t="vim ~/Dropbox/tasks.txt"
+alias t="todo.sh"

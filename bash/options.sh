@@ -7,6 +7,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+export CC=/usr/local/bin/gcc-4.2
+
 # vi mode, of course
 export EDITOR=vim
 # set -o vi
@@ -18,8 +20,8 @@ export SHELL=/bin/bash
 export TERM=screen-256color-bce
 
 # Paths
-export CDPATH=".:~:~/Dropbox/Projects"
-export PATH="~/.dotfiles/bin:$PATH"
+export CDPATH=".:~:~/Projects"
+export PATH="~/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/php5/bin:$PATH"
 
 # case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
