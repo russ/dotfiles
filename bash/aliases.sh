@@ -13,11 +13,18 @@ alias vim='mvim -v'
 alias vi='vim'
 alias v='vim'
 
+# tmux
+alias tx='tmuxinator'
+
+# Vagrant
+alias vg='vagrant'
+
 # Moving around
 alias ..='cd ..'
 alias cdb='cd -'
 
 # Show human friendly numbers and colors
+alias a='ls -lrthG'
 alias df='df -h'
 alias ll='ls -alGh'
 alias ls='ls -Gh'
@@ -38,8 +45,8 @@ pretty_json () {
 alias g='ack'
 
 # Alias Editing
-alias ae='vi ~/.dotfiles/bash_aliases' #alias edit
-alias ar='. ~/.dotfiles/bash_aliases'  #alias reload
+alias ae='vi ~/.dotfiles/bash/aliases.sh' #alias edit
+alias ar='. ~/.dotfiles/bash/aliases.sh'  #alias reload
 
 # Bash Options Editing
 alias boe='vi ~/.dotfiles/bash_options' 
@@ -75,7 +82,12 @@ alias b="bundle exec"
 alias r="rails"
 alias rc="rails console"
 alias rs="rails server"
+alias resetdb="bundle exec rake db:migrate:reset && bundle exec rake db:seed"
+alias dbmrt="dbmr RAILS_ENV=test"
 
 # Misc
 # alias t="vim ~/Dropbox/tasks.txt"
 alias t="todo.sh"
+
+
+alias list="vi ~/Dropbox/SHARPEN_LIST.txt"

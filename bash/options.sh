@@ -32,9 +32,9 @@ shopt -s nocaseglob
 # Colors the way I like em
 export LSCOLORS=BxGxFxdxCxDxDxhbadBxBx
 
-# Larger bash history (allow 32k entries; default is 500)
-export HISTSIZE=32768
-export HISTFILESIZE=$HISTSIZE
+# Larger bash history (unlimited)
+export HISTSIZE=
+export HISTFILESIZE=
 export HISTCONTROL=ignoredups
 
 # Make some commands not show up in history
@@ -45,7 +45,12 @@ export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true
 
 # Prompt
-export PS1='\[\e[1;32m\][\[\e[1;35m\]\[\e[1;32m\]\[\e[1;32m\]\[\e[1;36m\]\w\[\e[1;33m\]$(parse_git_branch)\[\e[1;32m\]]$ \[\e[0m\]'
+# export PS1='\[\e[1;32m\][\[\e[1;35m\]\[\e[1;32m\]\[\e[1;32m\]\[\e[1;36m\]\w\[\e[1;33m\]$(parse_git_branch)\[\e[1;32m\]]$ \[\e[0m\]'
+export PS1='\[\e[1;36m\]\w\[\e[1;32m\]$(parse_git_branch)\[\e[1;32m\] ✪ \[\e[0m\]'
+# function _update_ps1() {
+#   export PS1="$(~/Projects/powerline-shell/powerline-shell.py $?) "
+# }
+# export PROMPT_COMMAND="_update_ps1"
 
 # JRuby
 export JRUBY_OPTS=--1.9

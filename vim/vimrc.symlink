@@ -1,15 +1,54 @@
-call pathogen#infect()
-call pathogen#helptags()
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-haml.git'
+Bundle 'tpope/vim-markdown.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-vividchalk.git'
+Bundle 'vim-ruby/vim-ruby.git'
+Bundle 'rphillips/vim-zoomwin.git'
+Bundle 'Lokaltog/powerline'
+Bundle 'tpope/vim-commentary.git'
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'russ/rtf-highlight.git'
+Bundle 'mattn/webapi-vim.git'
+Bundle 'mattn/gist-vim.git'
+Bundle 'tpope/vim-endwise.git'
+Bundle 'digitaltoad/vim-jade.git'
+Bundle 'rosstimson/scala-vim-support.git'
+Bundle 'groenewege/vim-less.git'
+Bundle 'goldfeld/vim-seek.git'
+Bundle 'scrooloose/nerdtree.git'
+" Bundle 'wincent/Command-T.git'
+Bundle 'airblade/vim-gitgutter.git'
+Bundle 'slim-template/vim-slim.git'
+Bundle 'tpope/vim-surround'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'tpope/vim-commentary'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
+
+
 
 set noswapfile
 
 set nocompatible
 
-set shell=bash
-
 set number
+set relativenumber
 set ruler
 syntax on
+
+" Interactive Shell
+" set shellcmdflag=-lic
 
 " Set encoding
 set encoding=utf-8
@@ -20,12 +59,14 @@ set fileformat=unix
 " Whitespace stuff
 set nowrap
 " set wrapmargin=2
-" set textwidth=72
+set textwidth=80
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
+
+set colorcolumn=80
 
 " Tab completion
 set wildmode=list:longest,list:full
@@ -79,6 +120,7 @@ endif
 
 set t_Co=256
 set background=light
+" set background=dark
 color solarized
 
 " set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
