@@ -2,6 +2,9 @@
 
 # Via https://raw.github.com/mathiasbynens/dotfiles/master/.osx
 
+# Hide the desktop
+defaults write com.apple.finder CreateDesktop -bool false
+
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
@@ -58,10 +61,16 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock launchanim -bool false
 
 # Disable press-and-hold for keys in favor of key repeat
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+#Enable repeat on keydown
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
+
+#Set a shorter Delay until key repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 # Disable auto-correct
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -162,3 +171,5 @@ chflags nohidden ~/Library
 
 # Allow all applications to open.
 defaults write com.apple.LaunchServices LSQuarantine -bool false 
+
+killall Finder
