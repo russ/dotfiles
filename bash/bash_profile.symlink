@@ -3,11 +3,14 @@ if [ -e ~/.secrets ]; then
   . ~/.secrets
 fi
 
+set -o vi
+
 for f in ~/.dotfiles/**/*.sh; do source $f; done
 for f in ~/.dotfiles/**/completion.sh; do source $f; done
 
-PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-PATH="/usr/local/Cellar/python/2.7.1/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin/:$PATH"
+export PATH="/usr/local/Cellar/python/2.7.1/bin:$PATH"
+export PATH="~/bin:$HOME/.dotfiles/bash/bin:$PATH"
 
 eval "$(rbenv init -)"
 [[ -s /Users/russ/.nvm/nvm.sh ]] && . /Users/russ/.nvm/nvm.sh # This loads NVM
@@ -18,8 +21,11 @@ eval "$(rbenv init -)"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export RUBY_GC_MALLOC_LIMIT=90000000
-export RUBY_FREE_MIN=200000
-
 # Boxen
 # [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+export GEM_HOME=$HOME/gems
+export PATH=$GEM_HOME/bin:$PATH
+
+export GOPATH="/Users/russ/Projects/gocode"
+export PATH="$GOPATH/bin:$PATH"

@@ -1,0 +1,5 @@
+" Vim Slim - Slim file support
+
+Bundle "slim-template/slim"
+
+" vim:ft=vim

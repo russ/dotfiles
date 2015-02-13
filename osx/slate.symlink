@@ -38,7 +38,7 @@ bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
 bind l:shift;alt;cmd ${rightthird}
 bind .:shift;cmd ${bottomright}
-bind p:shift;cmd ${topright}
+bind e:shift;cmd ${topright}
 
 # Nudge Bindings
 bind l:shift;alt nudge +1% +0

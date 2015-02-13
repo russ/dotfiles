@@ -1,0 +1,21 @@
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>e :e $MYVIMRC<CR>
+nmap <silent> <leader>s :so $MYVIMRC<CR>
+
+" Paste from the system clipboard
+nmap <silent> <leader>p "*p<CR>
+map  <silent> <leader>y "*y<CR>
+
+" Clear last search
+nnoremap <CR> :nohlsearch<CR>
+
+" Fix old style ruby hashes
+map <leader>hn xf=hxxxi:<esc>f,
+
+" Move around splits with <c-hjkl>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" vim:ft=vim

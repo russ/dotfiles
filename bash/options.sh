@@ -17,10 +17,10 @@ export EDITOR=vim
 export SHELL=/bin/bash
 
 # Term
-export TERM=screen-256color-bce
+export TERM="xterm-256color"
 
 # Paths
-export CDPATH=".:~:~/Projects"
+export CDPATH=".:~:~/Projects:~/Dropbox/Projects"
 export PATH="~/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/php5/bin:$PATH"
 
 # case-insensitive globbing (used in pathname expansion)

@@ -1,0 +1,229 @@
+filetype off
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'whatyouhide/vim-gotham'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'slim-template/vim-slim'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'thoughtbot/vim-rspec'
+Plug 'altercation/vim-colors-solarized'
+
+call plug#end()
+
+
+set noswapfile
+
+set nocompatible
+
+set number
+" set relativenumber
+set ruler
+syntax on
+
+" Interactive Shell
+" set shellcmdflag=-lic
+
+" Set encoding
+set encoding=utf-8
+
+set fileformats=unix
+set fileformat=unix
+
+" Whitespace stuff
+set nowrap
+" set wrapmargin=2
+" set textwidth=80
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set list listchars=tab:»·,trail:·
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+" Status bar
+set laststatus=2
+" set t_Co=256
+let g:airline_powerline_fonts = 1
+
+let mapleader = ","
+
+let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>m :%s///ge<CR>
+
+nnoremap <silent> <Leader>t :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+
+" add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=javascript
+
+set backspace=indent,eol,start
+
+filetype plugin indent on
+
+" Clear last search
+nnoremap <CR> :nohlsearch<cr>
+
+" Show (partial) command in the status line
+set showcmd
+
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+
+
+
+
+set t_Co=16
+" highlight ColorColumn ctermbg=7
+set colorcolumn=80
+set background=light
+" set background=dark
+color solarized
+" color Tomorrow-Night
+" color gotham256
+
+" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+" hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+
+set cursorline
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>e :e $MYVIMRC<CR>
+nmap <silent> <leader>s :so $MYVIMRC<CR>
+
+" Quick switch windows
+nmap <silent> <leader>w <C-w><C-w>
+
+" Paste from the system clipboard
+nmap <silent> <leader>p "*p<CR>
+map <silent> <leader>y "*y<CR>
+
+" Fast Paging
+map <C-j> 10j
+map <C-k> 10k
+
+" Remap the tab key to do autocompletion or indentation depending on the
+" context (from http://www.vim.org/tips/tip.php?tip_id=102)
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+set winwidth=79
+set previewheight=20
+
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will fail.
+" set winheight=10
+" set winminheight=5
+" set winheight=999
+
+
+let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
+
+map <Leader>r :call RunCurrentSpecFile()<CR>
+map <Leader>R :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+
+" Highlight Settings
+" let g:rtfh_theme = 'solarized-dark'
+let g:rtfh_theme = 'neon'
+
+" Fix old style ruby hashes
+map <leader>hn xf=hxxxi:<esc>f,
+
+" Folding
+set foldmethod=syntax   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use"
+
+map <leader>f za
+map <leader>F zA
+
+" Move around splits with <c-hjkl>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+
+" toggle scratch buffer (scratch.vim plugin)
+" function! ToggleScratch()
+"   if expand('%') == g:ScratchBufferName
+"     quit
+"   else
+"     Sscratch
+"   endif
+" endfunction
+" map <leader>s :call ToggleScratch()<CR>
+
+
+" gist-vim config
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1 " make gists private by default
+
+" CtrlP Config
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+:set guifont=Menlo\ Regular:h24
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Tmux Runner
+let g:VtrClearBeforeSend = 0
+let g:VtrUseVtrMaps = 1
+let g:VtrGitCdUpOnOpen = 0
+let g:VtrPercentage = 30
+
+nnoremap <leader>va :VtrAttachToPane<cr>
+nmap <leader>fs :VtrFlushCommand<cr>:VtrSendCommandToRunner<cr>
+map <C-f> :VtrSendLinesToRunner<cr>
+
+nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 30}<cr>
+
+nnoremap <leader>sd :VtrSendCtrlD<cr>

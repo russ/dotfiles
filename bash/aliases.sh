@@ -9,12 +9,17 @@ alias g='hub'
 alias psg="ps aux | grep $1"
 
 # Better Vim
-alias vim='mvim -v'
+alias vim='mvim -v -w ~/.vimlog "$@"'
 alias vi='vim'
 alias v='vim'
+alias vwrite='vim -u ~/.vim-writing'
+
+# ngrok
+alias ngrok='ngrok -authtoken y8SZP6JvDiJ9CdCr1VSq'
 
 # tmux
 alias tx='tmuxinator'
+alias tat='tmux new-session -As `basename $PWD`'
 
 # Vagrant
 alias vg='vagrant'

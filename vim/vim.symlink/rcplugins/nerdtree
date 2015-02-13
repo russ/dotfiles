@@ -1,0 +1,10 @@
+" NERDTree - File browser pane
+
+Bundle 'scrooloose/nerdtree'
+
+let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>m :%s///ge<CR>
+
+" vim:ft=vim

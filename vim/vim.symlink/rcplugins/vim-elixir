@@ -1,0 +1,5 @@
+" Vim Elixir - Elixir file support
+
+Bundle 'elixir-lang/vim-elixir'
+
+" vim:ft=vim

@@ -1,0 +1,16 @@
+set t_Co=256
+set colorcolumn=80
+set background=light
+color solarized
+
+set cursorline
+
+set guifont=Menlo\ Regular:h24
+
+" Helps to know where I'm at
+set ruler
+set number
+
+set nowrap
+
+" vim:ft=vim

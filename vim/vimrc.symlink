@@ -1,244 +1,28 @@
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-haml.git'
-Bundle 'tpope/vim-markdown.git'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-vividchalk.git'
-Bundle 'vim-ruby/vim-ruby.git'
-Bundle 'rphillips/vim-zoomwin.git'
-Bundle 'Lokaltog/powerline'
-Bundle 'tpope/vim-commentary.git'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'kchmck/vim-coffee-script.git'
-Bundle 'russ/rtf-highlight.git'
-Bundle 'mattn/webapi-vim.git'
-Bundle 'mattn/gist-vim.git'
-Bundle 'tpope/vim-endwise.git'
-Bundle 'digitaltoad/vim-jade.git'
-Bundle 'rosstimson/scala-vim-support.git'
-Bundle 'groenewege/vim-less.git'
-Bundle 'goldfeld/vim-seek.git'
-Bundle 'scrooloose/nerdtree.git'
-" Bundle 'wincent/Command-T.git'
-Bundle 'airblade/vim-gitgutter.git'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'tpope/vim-surround'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'tpope/vim-commentary'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'kien/ctrlp.vim'
-Bundle 'rking/ag.vim'
-
-
-
-set noswapfile
-
-set nocompatible
-
-set number
-set relativenumber
-set ruler
-syntax on
-
-" Interactive Shell
-" set shellcmdflag=-lic
-
-" Set encoding
-set encoding=utf-8
-
-set fileformats=unix
-set fileformat=unix
-
-" Whitespace stuff
-set nowrap
-" set wrapmargin=2
-set textwidth=80
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set list listchars=tab:\ \ ,trail:·
-
-set colorcolumn=80
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-
-" Status bar
-set laststatus=2
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'skwp'
-
 let mapleader = ","
 
-let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
-map <Leader>n :NERDTreeToggle<CR>
-map <Leader>m :%s///ge<CR>
-
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-
-" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
-" add json syntax highlighting
-au BufNewFile,BufRead *.json set ft=javascript
-
-set backspace=indent,eol,start
-
-filetype plugin indent on
-
-" Clear last search
-nnoremap <CR> :nohlsearch<cr>
-
-" Show (partial) command in the status line
-set showcmd
-
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
-
-
-
-
-set t_Co=256
-set background=light
-" set background=dark
-color solarized
-
-" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-" hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
-
-set cursorline
-
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>e :e $MYVIMRC<CR>
-nmap <silent> <leader>s :so $MYVIMRC<CR>
-
-" Quick switch windows
-nmap <silent> <leader>w <C-w><C-w>
-
-" Paste from the system clipboard
-nmap <silent> <leader>p "*p<CR>
-nmap <silent> <leader>y "*y<CR>
-
-" Fast Paging
-map <C-j> 10j
-map <C-k> 10k
-
-" Remap the tab key to do autocompletion or indentation depending on the
-" context (from http://www.vim.org/tips/tip.php?tip_id=102)
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
-set winwidth=79
-set previewheight=20
-
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will fail.
-" set winheight=10
-" set winminheight=5
-" set winheight=999
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Running tests
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! RunTests(filename)
-  " Write the file and run tests for the given filename
-  :w
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-
-  if filereadable("script/test")
-    exec ":!script/test " . a:filename
-  elseif filereadable("Gemfile")
-    exec ":!bundle exec rspec --color " . a:filename
-  else
-    exec ":!rspec --color " . a:filename
-  end
+function! s:SourceConfigFilesIn(directory)
+ let directory_splat = '~/.vim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+        execute 'source' config_file
+    endif
+  endfor
 endfunction
 
-function! SetTestFile()
-  " Set the spec file that tests will be run for.
-  let t:grb_test_file=@%
-endfunction
+" Setup Vundle to manage my bundles
+"-----------------------------------
+set nocompatible
+filetype off " required!
+set rtp+=~/.vim/bundles/vundle/
+call vundle#rc("~/.vim/bundles/")
 
-function! RunTestFile(...)
-  if a:0
-    let command_suffix = a:1
-  else
-    let command_suffix = ""
-  endif
+" Plugins are each listed in their own file. Loop and source ftw
+"----------------------------------------------------------------
+call s:SourceConfigFilesIn('rcplugins')
 
-  " Run the tests for the previously-marked file.
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
-  if in_test_file
-    call SetTestFile()
-  elseif !exists("t:grb_test_file")
-    return
-  end
-  call RunTests(t:grb_test_file . command_suffix)
-endfunction
+filetype plugin indent on " required!
+syntax on
 
-function! RunNearestTest()
-  let spec_line_number = line('.')
-  call RunTestFile(":" . spec_line_number . " -b")
-endfunction
-
-map <leader>r :call RunTestFile()<cr>
-map <leader>R :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-map <leader>q :!rspec %<cr>
-
-" Highlight Settings
-" let g:rtfh_theme = 'solarized-dark'
-let g:rtfh_theme = 'neon'
-
-" Fix old style ruby hashes
-map <leader>hn xf=hxxxi:<esc>f,
-
-" Folding
-set foldmethod=syntax   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use"
-
-map <leader>f za
-map <leader>F zA
-
-" Move around splits with <c-hjkl>
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+" Vimrc is split accross multiple files, so loop over and source each
+"---------------------------------------------------------------------
+call s:SourceConfigFilesIn('rcfiles')
