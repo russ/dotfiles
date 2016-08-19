@@ -15,6 +15,8 @@ alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
 alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
 alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
 alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+alias center move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY
+alias bigcenter move screenOriginX+screenSizeX/6;screenOriginY screenOriginX+screenSizeX/1.5;screenSizeY
 
 # Resize Bindings
 bind l:alt resize +1% +0
@@ -36,6 +38,8 @@ bind i:shift;alt;cmd ${middlethird}
 bind b:shift;cmd ${bottomleft}
 bind y:shift;cmd ${topleft}
 bind l:shift;cmd ${righthalf}
+bind c:shift;cmd ${center}
+bind c:alt;shift;cmd ${bigcenter}
 bind l:shift;alt;cmd ${rightthird}
 bind .:shift;cmd ${bottomright}
 bind e:shift;cmd ${topright}

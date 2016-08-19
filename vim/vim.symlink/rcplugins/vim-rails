@@ -1,0 +1,3 @@
+" Vim Rails - Rails integration with vim
+
+Bundle "tpope/vim-rails"

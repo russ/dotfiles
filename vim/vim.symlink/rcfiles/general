@@ -35,4 +35,9 @@ endif
 set undodir=~/.undo-vim
 set undofile " Create FILE.un~ files for persistent undo
 
+:map Q <Nop> " I don't use this
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=1200
+
 " vim:ft=vim

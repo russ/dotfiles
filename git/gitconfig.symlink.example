@@ -1,9 +1,9 @@
 [user]
-	name = Russ Smith
+  name = Russ Smith
   email = russ@bashme.org
 
 [github]
-	user = russ
+  user = russ
   token = XXX
 
 [core]

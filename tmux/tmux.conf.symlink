@@ -1,3 +1,8 @@
+# # set -g default-terminal "rxvt-256color"
+
+# Copy-paste integration
+set-option -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
+
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
@@ -11,58 +16,20 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
 
-# Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'jimeh/tmux-themepack'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'powerline/powerline'
 
-# Update default binding of `Enter` to also use copy-pipe
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+set -g @themepack 'block/yellow'
 
-# Look good
-set-option -g default-terminal "screen-256color"
-set-option -g status-right " #(date '+%a, %b %d - %I:%M') #(battery -t) "
+run '~/.tmux/plugins/tpm/tpm'
 
-# Enable mouse support (works in iTerm)
-set-window-option -g mode-mouse on
-set-option -g mouse-select-pane on
-set-option -g mouse-resize-pane on
-set-option -g mouse-select-window on
 
-# set up layouts
-# set main-pane-width 130
-
-# Change cursor in vim to distinguish between insert and command mode
-#set-option -g terminal-overrides '*88col*:colors=88,*256col*:colors=256,xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007:Cc=\E]12;%p1%s\007:Cr=\E]112\007:Cs=\E]50;CursorShape=%?%p1%{3}%<%t%{0}%e%p1%{2}%-%;%d\007'
-
-# scrollback buffer size increase
-set -g history-limit 500000
-
-# C-b C-b will swap to last used window
-bind-key C-b last-window
-
-# Start tab numbering at 1
-set -g base-index 1
-
-# Allows for faster key repetition
-set -s escape-time 0
-
-# Highlight active window
-set -g status-bg '#666666'
-set -g status-fg '#AAAAAA'
-set-window-option -g window-status-current-bg '#444444'
-
-# use different keys to split vertical and horizonal
-bind | split-window -h
-bind - split-window -v
-
-bind-key b break-pane -d
-
-# Change cursor in vim to distinguish between insert and command mode
-# Use in conjunciton with tmux-cursors.vim
-set-option -g terminal-overrides '*88col*:colors=88,*256col*:colors=256,xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007:Cc=\E]12;%p1%s\007:Cr=\E]112\007:Cs=\E]50;CursorShape=%?%p1%{3}%<%t%{0}%e%p1%{2}%-%;%d\007'
-
-bind C-j split-window -v "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
-
-# Easily swap a pane (targeted by pane number) with the current pane
-bind-key s display-panes\; command-prompt -p "pane #: "  "swap-pane -t '%%'"
+set-option -g status on
+set-option -g status-interval 2
+set-option -g status-utf8 on
+set-option -g status-left-length 60
+set-option -g status-right-length 90

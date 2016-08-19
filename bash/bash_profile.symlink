@@ -11,6 +11,7 @@ for f in ~/.dotfiles/**/completion.sh; do source $f; done
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin/:$PATH"
 export PATH="/usr/local/Cellar/python/2.7.1/bin:$PATH"
 export PATH="~/bin:$HOME/.dotfiles/bash/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 eval "$(rbenv init -)"
 [[ -s /Users/russ/.nvm/nvm.sh ]] && . /Users/russ/.nvm/nvm.sh # This loads NVM
@@ -24,8 +25,10 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Boxen
 # [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
-export GEM_HOME=$HOME/gems
-export PATH=$GEM_HOME/bin:$PATH
-
 export GOPATH="/Users/russ/Projects/gocode"
 export PATH="$GOPATH/bin:$PATH"
+
+eval `boot2docker shellinit 2>/dev/null`
+
+alias fuck='$(thefuck $(fc -ln -1))'
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"

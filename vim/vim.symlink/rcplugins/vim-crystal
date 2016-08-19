@@ -1,0 +1,5 @@
+" Crystal Language Support
+
+Bundle 'rhysd/vim-crystal'
+
+" vim:ft=vim

@@ -2,17 +2,22 @@ alias c='clear'
 alias h='history'
 
 # git/hub
-alias git='hub'
-alias g='hub'
+# alias git='hub'
+# alias g='hub'
 
 # PS
 alias psg="ps aux | grep $1"
 
 # Better Vim
-alias vim='mvim -v -w ~/.vimlog "$@"'
-alias vi='vim'
-alias v='vim'
-alias vwrite='vim -u ~/.vim-writing'
+# alias vim='mvim -v -w ~/.vimlog "$@"'
+# alias vi='vim'
+# alias v='vim'
+# alias vwrite='vim -u ~/.vim-writing'
+
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias e='emacs'
 
 # ngrok
 alias ngrok='ngrok -authtoken y8SZP6JvDiJ9CdCr1VSq'
@@ -93,6 +98,9 @@ alias dbmrt="dbmr RAILS_ENV=test"
 # Misc
 # alias t="vim ~/Dropbox/tasks.txt"
 alias t="todo.sh"
+alias dc="cd"
 
 
 alias list="vi ~/Dropbox/SHARPEN_LIST.txt"
+
+alias emp_production="export EMPIRE_API_URL=http://empire.amavalet.com/"

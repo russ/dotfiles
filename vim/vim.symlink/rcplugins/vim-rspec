@@ -2,6 +2,7 @@
 
 Bundle 'thoughtbot/vim-rspec'
 
+let g:VtrClearSequence = "clear\r"
 let g:rspec_command = "call VtrSendCommand('bundle exec rspec {spec}')"
 
 map <Leader>r :call RunCurrentSpecFile()<CR>

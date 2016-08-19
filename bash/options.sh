@@ -7,11 +7,11 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-export CC=/usr/local/bin/gcc-4.2
-
 # vi mode, of course
-export EDITOR=vim
+export EDITOR=nvim
 # set -o vi
+
+export ARCHFLAGS="-arch x86_64"
 
 # Shell
 export SHELL=/bin/bash
@@ -54,6 +54,9 @@ export PS1='\[\e[1;36m\]\w\[\e[1;32m\]$(parse_git_branch)\[\e[1;32m\] ✪ \[\e[0
 
 # JRuby
 export JRUBY_OPTS=--1.9
+
+# Gopath
+export GOPATH=~/go
 
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator

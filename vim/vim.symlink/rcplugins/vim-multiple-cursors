@@ -1,0 +1,5 @@
+" vim-multiple-cursors
+
+Bundle "terryma/vim-multiple-cursors"
+
+" vim:ft=vim

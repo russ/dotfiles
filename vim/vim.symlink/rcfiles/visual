@@ -1,7 +1,7 @@
 set t_Co=256
 set colorcolumn=80
-set background=light
-color solarized
+set background=dark
+color dracula
 
 set cursorline
 
