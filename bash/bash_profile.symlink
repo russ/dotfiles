@@ -32,3 +32,9 @@ eval `boot2docker shellinit 2>/dev/null`
 
 alias fuck='$(thefuck $(fc -ln -1))'
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+
+# added by Anaconda2 4.2.0 installer
+export PATH=~/anaconda/bin:$PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
+export PATH=/Developer/NVIDIA/CUDA-7.0/bin:$PATH
+export PATH="/Users/russ/anaconda2/bin:$PATH"

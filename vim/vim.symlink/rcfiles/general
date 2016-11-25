@@ -14,6 +14,9 @@ set secure                        " Limit what modelines and autocmds can do
 set list listchars=tab:»·,trail:· " Say no to extra whitespace
 set backspace=indent,eol,start
 
+" inoremap <Esc>  <NOP>
+" inoremap jj     <Esc>
+
 " Set encoding
 set encoding=utf-8
 set fileformats=unix

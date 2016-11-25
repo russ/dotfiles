@@ -11,7 +11,7 @@ export LC_ALL="en_US.UTF-8"
 export ZSH=/Users/russ/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="minimal"
+ZSH_THEME="dracula"
 
 plugins=(git git-extras sudo rails ruby bundler catimg)
 
@@ -22,12 +22,17 @@ export PATH="/Users/russ/llvm-3.5.0-1/bin:$PATH"
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 export EDITOR='vim'
 export COMPOSE_HTTP_TIMEOUT=1000
+export GOROOT_BOOTSTRAP=1.7.1
+export GOROOT=/usr/local/Cellar/go/1.7.3/libexec
 
 source $ZSH/oh-my-zsh.sh
+source ~/.secrets
 
 alias v="vim"
 alias vi="vim"
 alias vm="vim"
 alias g="git"
+alias gti="git"
 alias emp_production="export EMPIRE_API_URL=http://empire.amavalet.com/ && ~/go/bin/emp"
 alias cacheclear="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias t="/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg"

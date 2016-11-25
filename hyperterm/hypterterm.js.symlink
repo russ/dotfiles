@@ -4,12 +4,18 @@ module.exports = {
     fontSize: 22,
 
     // font family with optional fallbacks
+    // fontFamily: '"Inconsolata-g for Powerline", monospace',
     // fontFamily: '"Inconsolata for Powerline", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
     // fontFamily: '"Meslo LG DZ S for Powerline", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
-    fontFamily: '"Inconsolata-g for Powerline", monospace',
+    // fontFamily: '"Inconsolata-g for Powerline", monospace',
+    fontFamily: 'Hack, monospace',
 
     // terminal cursor background color (hex)
     cursorColor: '#F81CE5',
+
+    // The shape of the caret in the terminal.
+    // Available options are: 'BEAM', 'UNDERLINE', 'BLOCK'
+    cursorShape: 'BLOCK',
 
     // color of the text
     foregroundColor: '#fff',
@@ -23,16 +29,8 @@ module.exports = {
     // custom css to embed in the main window
     css: 'header.t_header {background: transparent!important;}',
 
-    // custom padding (css format, i.e.: `top right bottom left`)
-    termCSS: `
-      x-screen {
-        -webkit-font-smoothing: subpixel-antialiased !important;
-      }
-    `,
-
     // custom padding
     padding: '20px',
-    // padding: '0px 0px',
 
     // some color overrides. see http://bit.ly/29k1iU2 for
     // the full list
@@ -65,7 +63,9 @@ module.exports = {
   plugins: [
     'hyperterm-blink',
     'hyperterm-1password',
-    'hyperterm-dracula'
+    'hyperterm-dracula',
+    'hyperterm-subpixel-antialiased',
+    'hyperlinks'
   ],
 
   // in development, you can create a directory under

@@ -6,9 +6,5 @@
   "repository": "zeit/hyperterm",
   "license": "MIT",
   "homepage": "https://hyperterm.org",
-  "dependencies": {
-    "hyperterm-blink": "latest",
-    "hyperterm-1password": "latest",
-    "hyperterm-dracula": "latest"
-  }
+  "dependencies": {}
 }
