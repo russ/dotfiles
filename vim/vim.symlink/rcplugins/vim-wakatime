@@ -1,0 +1,5 @@
+" Wakatime - Quantify your Editor usage
+
+Bundle 'wakatime/vim-wakatime'
+
+" vim:ft=vim

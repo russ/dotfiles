@@ -1,0 +1,3 @@
+" Typescript for Vim
+
+Bundle "leafgarland/typescript-vim"

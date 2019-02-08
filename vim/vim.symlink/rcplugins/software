@@ -1,0 +1,5 @@
+" Software - tracking
+
+Bundle "swdotcom/swdc-vim"
+
+" vim:ft=vim

@@ -3,8 +3,7 @@ if [ -e ~/.secrets ]; then
   . ~/.secrets
 fi
 
-set -o vi
-
+set -o vi 
 for f in ~/.dotfiles/**/*.sh; do source $f; done
 for f in ~/.dotfiles/**/completion.sh; do source $f; done
 
@@ -16,8 +15,13 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 [[ -s /Users/russ/.nvm/nvm.sh ]] && . /Users/russ/.nvm/nvm.sh # This loads NVM
 
+eval "$(pyenv init -)"
+
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+# Brew Python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -33,8 +37,29 @@ eval `boot2docker shellinit 2>/dev/null`
 alias fuck='$(thefuck $(fc -ln -1))'
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
 # added by Anaconda2 4.2.0 installer
 export PATH=~/anaconda/bin:$PATH
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
 export PATH=/Developer/NVIDIA/CUDA-7.0/bin:$PATH
 export PATH="/Users/russ/anaconda2/bin:$PATH"
+
+GPG_AGENT_SOCKET="${HOME}/.gnupg/S.gpg-agent.ssh"
+if [ ! -S $GPG_AGENT_SOCKET ]; then
+  gpg-agent --daemon >/dev/null 2>&1
+  export GPG_TTY=$(tty)
+fi
+
+# Set SSH to use gpg-agent if it is configured to do so 
+GNUPGCONFIG=${GNUPGHOME:-"$HOME/.gnupg/gpg-agent.conf"}
+if grep -q enable-ssh-support "$GNUPGCONFIG"; then
+  unset SSH_AGENT_PID
+  export SSH_AUTH_SOCK=$GPG_AGENT_SOCKET
+fi
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+

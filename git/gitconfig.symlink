@@ -35,3 +35,11 @@
 
 [status]
   color = auto
+
+[http]
+  sslverify = false
+
+[https]
+  sslverify = false
+[init]
+	templatedir = ~/.git-templates

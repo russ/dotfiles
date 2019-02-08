@@ -13,6 +13,7 @@ set softtabstop=2                 "     specific settings via autocmd
 set secure                        " Limit what modelines and autocmds can do
 set list listchars=tab:»·,trail:· " Say no to extra whitespace
 set backspace=indent,eol,start
+set clipboard=unnamed
 
 " inoremap <Esc>  <NOP>
 " inoremap jj     <Esc>
@@ -42,5 +43,7 @@ set undofile " Create FILE.un~ files for persistent undo
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=1200
+
+autocmd BufNewFile,BufRead /Users/russ/Projects/foxy/* set nowrap tabstop=4 shiftwidth=4
 
 " vim:ft=vim

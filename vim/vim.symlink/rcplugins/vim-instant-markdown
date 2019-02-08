@@ -1,0 +1,3 @@
+" Instant Vim Markdown Preview
+
+Bundle "suan/vim-instant-markdown"

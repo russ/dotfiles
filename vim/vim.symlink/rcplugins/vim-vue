@@ -1,0 +1,5 @@
+" Vue Syntax
+
+Bundle 'posva/vim-vue'
+
+" vim:ft=vim

@@ -1,26 +1,14 @@
 alias c='clear'
 alias h='history'
 
-# git/hub
-# alias git='hub'
-# alias g='hub'
-
 # PS
 alias psg="ps aux | grep $1"
 
 # Better Vim
-# alias vim='mvim -v -w ~/.vimlog "$@"'
-# alias vi='vim'
-# alias v='vim'
-# alias vwrite='vim -u ~/.vim-writing'
-
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
-alias e='emacs'
-
-# ngrok
-alias ngrok='ngrok -authtoken y8SZP6JvDiJ9CdCr1VSq'
+alias vim='mvim -v -w ~/.vimlog "$@"'
+alias vi='vim'
+alias v='vim'
+alias vwrite='vim -u ~/.vim-writing'
 
 # tmux
 alias tx='tmuxinator'
@@ -37,7 +25,8 @@ alias cdb='cd -'
 alias a='ls -lrthG'
 alias df='df -h'
 alias ll='ls -alGh'
-alias ls='ls -Gh'
+# alias ls='ls -Gh'
+alias ls='exa -lah --git'
 alias du='du -h -d 1'
 
 # show me files matching "ls grep"
@@ -87,6 +76,7 @@ alias sudo='sudo '
 
 # Bundler
 alias b="bundle exec"
+alias be="bundle exec"
 
 # Rails
 alias r="rails"
@@ -95,12 +85,9 @@ alias rs="rails server"
 alias resetdb="bundle exec rake db:migrate:reset && bundle exec rake db:seed"
 alias dbmrt="dbmr RAILS_ENV=test"
 
-# Misc
-# alias t="vim ~/Dropbox/tasks.txt"
-alias t="todo.sh"
+# Typos
 alias dc="cd"
+alias gti="cd"
 
-
-alias list="vi ~/Dropbox/SHARPEN_LIST.txt"
-
-alias emp_production="export EMPIRE_API_URL=http://empire.amavalet.com/"
+# Git
+alias g="git status"

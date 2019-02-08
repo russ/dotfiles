@@ -3,8 +3,9 @@ nmap <silent> <leader>e :e $MYVIMRC<CR>
 nmap <silent> <leader>s :so $MYVIMRC<CR>
 
 " Paste from the system clipboard
-nmap <silent> <leader>p "*p<CR>
-map  <silent> <leader>y "*y<CR>
+" nmap <silent> <leader>p "*p<CR>
+" map  <silent> <leader>y "*y<CR>
+nmap <silent> <leader>p "+p<CR>
 
 " Clear last search
 nnoremap <CR> :nohlsearch<CR>
@@ -17,5 +18,11 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+" Only redraw screen after macro finishes
+set lazyredraw
+
+" Quick way to insert the current date
+nnoremap ,d "=strftime("%Y/%m/%d ")<CR>P
 
 " vim:ft=vim

@@ -15,8 +15,10 @@ vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
 nnoremap <leader>rj :VtrSendCommandToRunner be rake konacha<cr>
 nnoremap <leader>rs :VtrSendCommandToRunner rake<cr>
 
-nmap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+nmap <leader>osh :VtrOpenRunner {'orientation': 'h', 'percentage': 40}<cr>
+nmap <leader>osv :VtrOpenRunner {'orientation': 'v', 'percentage': 25}<cr>
 
+nnoremap <leader>ar :VtrReattachRunner<cr>
 nnoremap <leader>sd :VtrSendCtrlD<cr>
 nnoremap <leader>q :VtrSendCommandToRunner q<cr>
 nnoremap <leader>sf :w<cr>:call SendFileViaVtr()<cr>

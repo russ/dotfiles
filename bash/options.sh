@@ -8,7 +8,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 # vi mode, of course
-export EDITOR=nvim
+export EDITOR=vim
 # set -o vi
 
 export ARCHFLAGS="-arch x86_64"
@@ -57,6 +57,9 @@ export JRUBY_OPTS=--1.9
 
 # Gopath
 export GOPATH=~/go
+
+# Terraform Path
+export TERRAFORM_BIN=/usr/local/bin/terraform
 
 # Tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
