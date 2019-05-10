@@ -1,14 +1,10 @@
-# set -g default-terminal "rxvt-256color"
-
 # Copy-paste integration
-# set-option -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
+set-option -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 set-option -g default-command "reattach-to-user-namespace -l bash"
 
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
-
-bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
 # Act like Vim
 set-window-option -g mode-keys vi
@@ -18,52 +14,75 @@ bind-key k select-pane -U
 bind-key l select-pane -R
 
 # List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+set -g @plugin 'arcticicestudio/nord-tmux'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+
+
+
+
+# set -g default-terminal "rxvt-256color"
+
+# bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+
+# # List of plugins
 # set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'tmux-plugins/tmux-battery'
-# set -g @plugin 'jimeh/tmux-themepack'
 # set -g @plugin 'tmux-plugins/tmux-sensible'
-# set -g @plugin 'powerline/powerline'
-
-# set -g @themepack 'block/yellow'
-
+# set -g @plugin 'arcticicestudio/nord-tmux'
+# # set -g @plugin 'tmux-plugins/tpm'
+# # set -g @plugin 'tmux-plugins/tmux-battery'
+# # set -g @plugin 'jimeh/tmux-themepack'
+# # set -g @plugin 'tmux-plugins/tmux-sensible'
+# # set -g @plugin 'powerline/powerline'
+# 
+# # set -g @themepack 'block/yellow'
+# 
 # run '~/.tmux/plugins/tpm/tpm'
-
-# set-option -g status on
-# set-option -g status-interval 2
-# set-option -g status-utf8 on
-# set-option -g status-left-length 60
-# set-option -g status-right-length 90
-
-# fiddle with colors of status bar
-set -g status-bg colour4
-set -g status-fg colour234
-
-# fiddle with colors of inactive windows
-setw -g window-status-bg colour4
-setw -g window-status-fg colour234
-setw -g window-status-attr dim
-
-# change color of active window
-setw -g window-status-current-fg colour234
-setw -g window-status-current-bg colour3
-setw -g window-status-current-attr bright
-
-# set color of regular and active panes
-set -g pane-border-fg colour234
-set -g pane-border-bg default
-set -g pane-active-border-fg blue
-set -g pane-active-border-bg default
-
-# set color of command line
-set -g message-fg white
-set -g message-bg colour22
-set -g message-attr bright
-
-#  configure contents of status bar
-set -g status-left-length 40
-set -g status-left "#[fg=black]\"#S\" "
-
-set -g status-right "#[fg=black] #h | %d %b %R"
-
-setw -g monitor-activity on
-set -g visual-activity on
+# 
+# # set-option -g status on
+# # set-option -g status-interval 2
+# # set-option -g status-utf8 on
+# # set-option -g status-left-length 60
+# # set-option -g status-right-length 90
+# 
+# # fiddle with colors of status bar
+# set -g status-bg colour4
+# set -g status-fg colour234
+# 
+# # fiddle with colors of inactive windows
+# setw -g window-status-bg colour4
+# setw -g window-status-fg colour234
+# setw -g window-status-attr dim
+# 
+# # change color of active window
+# setw -g window-status-current-fg colour234
+# setw -g window-status-current-bg colour3
+# setw -g window-status-current-attr bright
+# 
+# # set color of regular and active panes
+# set -g pane-border-fg colour234
+# set -g pane-border-bg default
+# set -g pane-active-border-fg blue
+# set -g pane-active-border-bg default
+# 
+# # set color of command line
+# set -g message-fg white
+# set -g message-bg colour22
+# set -g message-attr bright
+# 
+# #  configure contents of status bar
+# set -g status-left-length 40
+# set -g status-left "#[fg=black]\"#S\" "
+# 
+# set -g status-right "#[fg=black] #h | %d %b %R"
+# 
+# setw -g monitor-activity on
+# set -g visual-activity on

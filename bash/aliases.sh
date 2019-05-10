@@ -5,10 +5,13 @@ alias h='history'
 alias psg="ps aux | grep $1"
 
 # Better Vim
-alias vim='mvim -v -w ~/.vimlog "$@"'
-alias vi='vim'
-alias v='vim'
-alias vwrite='vim -u ~/.vim-writing'
+# alias vim='mvim -v -w ~/.vimlog "$@"'
+# alias vi='vim'
+# alias v='vim'
+# alias vwrite='vim -u ~/.vim-writing'
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
 
 # tmux
 alias tx='tmuxinator'
@@ -91,3 +94,15 @@ alias gti="cd"
 
 # Git
 alias g="git status"
+
+codi() {
+  local syntax="ruby"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
