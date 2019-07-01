@@ -95,6 +95,8 @@ alias gti="cd"
 # Git
 alias g="git status"
 
+alias love="/Applications/love.app/Contents/MacOS/love"
+
 codi() {
   local syntax="ruby"
   shift

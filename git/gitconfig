@@ -1,0 +1,24 @@
+[user]
+  name = Russ Smith
+  email = russ@bashme.org
+
+[core]
+  autocrlf = input
+  safecrlf = false
+  eol = lf
+
+[help]
+  autocorrect = 1
+
+[apply]
+  whitespace = strip
+
+[diff]
+  color = auto
+  rename = copy
+
+[pager]
+  color = true
+
+[status]
+  color = auto

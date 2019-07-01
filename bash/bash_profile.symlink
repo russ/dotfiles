@@ -34,7 +34,10 @@ export PATH="$GOPATH/bin:$PATH"
 
 eval `boot2docker shellinit 2>/dev/null`
 
+alias image="kitty +kitten icat --align left"
+
 alias fuck='$(thefuck $(fc -ln -1))'
+alias e='emacs'
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 
 export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
@@ -67,3 +70,7 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
