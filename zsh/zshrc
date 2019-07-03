@@ -7,32 +7,35 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/russ/.oh-my-zsh
+# export ZSH=/Users/russ/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="dracula"
+# ZSH_THEME="dracula"
 
-plugins=(git git-extras sudo rails ruby bundler catimg)
+# plugins=(git git-extras sudo rails ruby bundler catimg)
 
 # User configuration
 
-export PATH="/Users/russ/Projects/gocode/bin:/usr/local/heroku/bin:/Users/russ/.rbenv/shims:/Users/russ/.rbenv/bin:~/bin:/Users/russ/.dotfiles/bash/bin:/usr/local/Cellar/python/2.7.1/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/:~/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/php5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/Users/russ/llvm-3.5.0-1/bin:$PATH"
-export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
-export EDITOR='vim'
-export COMPOSE_HTTP_TIMEOUT=1000
-export GOROOT_BOOTSTRAP=1.7.1
-export GOROOT=/usr/local/Cellar/go/1.7.3/libexec
-
-source $ZSH/oh-my-zsh.sh
-source ~/.secrets
-
-alias v="vim"
-alias vi="vim"
-alias vm="vim"
-alias g="git"
-alias gti="git"
-alias emp_production="export EMPIRE_API_URL=http://empire.amavalet.com/ && ~/go/bin/emp"
-alias cacheclear="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-alias t="/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg"
+# export PATH="/Users/russ/Projects/gocode/bin:/usr/local/heroku/bin:/Users/russ/.rbenv/shims:/Users/russ/.rbenv/bin:~/bin:/Users/russ/.dotfiles/bash/bin:/usr/local/Cellar/python/2.7.1/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/:~/.dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/local/php5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/Users/russ/llvm-3.5.0-1/bin:$PATH"
+# export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+# export EDITOR='vim'
+# export COMPOSE_HTTP_TIMEOUT=1000
+# export GOROOT_BOOTSTRAP=1.7.1
+# export GOROOT=/usr/local/Cellar/go/1.7.3/libexec
+#
+# source $ZSH/oh-my-zsh.sh
+# source ~/.secrets
+#
+# alias v="vim"
+# alias vi="vim"
+# alias vm="vim"
+# alias g="git"
+# alias gti="git"
+# alias emp_production="export EMPIRE_API_URL=http://empire.amavalet.com/ && ~/go/bin/emp"
+# alias cacheclear="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+# alias t="/usr/local/Cellar/todo-txt/2.10/bin/todo.sh -d $HOME/Dropbox/todo/todo.cfg"
