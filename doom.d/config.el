@@ -5,6 +5,8 @@
 (server-start)
 (require 'org-protocol)
 
+(setq undo-tree-auto-save-history true)
+
 (projectile-add-known-project "~/Dropbox/Notes/org")
 (setq projectile-project-search-path '("~/Projects/"))
 

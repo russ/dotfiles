@@ -1,1 +1,63 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.doom.d:
+    ~/.config/compton: compton
+    ~/.emacs.d: doom-emacs
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+    ~/.screen.conf: screen/screen.conf
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.Xresources:
+    ~/.zshrc: zsh/zshrc
+
+- pacman:
+    - awesome
     - copyq
+    - docker
+    - emacs
+    - firefox
+    - firefox-ublock-origin
+    - git
+    - inkscape
+    - krita
+    - mopidy
+    - ranger
+    - rofi
+    - s3cmd
+    - tmux
+    - zsh
+
+- pacaur:
+    - nerd-fonts-complete
+    - slack-desktop
+    - spotify
+    - ttf-typicons
+    - xst-git
+
+- asdf:
+    - plugin: crystal
+      url: https://github.com/marciogm/asdf-crystal.git
+    - plugin: php
+      url: https://github.com/odarriba/asdf-php.git
+    - plugin: python
+      url: https://github.com/danhper/asdf-python.git
+    - plugin: ruby
+      url: https://github.com/asdf-vm/asdf-ruby
+    - plugin: terraform
+      url: https://github.com/Banno/asdf-hashicorp
+
+- shell:
+    - description: Installing submodules
+      command: git submodule update --init --recursive
+
+    - description: Setting Z-shell as default shell
+      command: scripts/default-zsh
+
+    - description: Prepping Doom (DotBot sees this as a failure)
+      command: cd doom-emacs; ./bin/doom -y quickstart
