@@ -244,7 +244,7 @@ awful.rules.rules = {
       local w_area = screen[ c.screen ].workarea
       local winwidth = 550
       c:struts( { left = winwidth } )
-      c:geometry( { x = 0, y = 340, width = winwidth, height = 705 } )
+      c:geometry( { x = 0, y = 340, width = winwidth, height = 711 } )
       -- c:geometry( { x = 0, y = 0, width = winwidth, height = 1045 } )
     end
     },
