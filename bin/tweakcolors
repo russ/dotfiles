@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+sed "/COLORS/r"<(walcolors) ~/.config/conky/config.conkyrc.template > /tmp/conkyconfig
+mv /tmp/conkyconfig ~/.config/conky/config.conkyrc

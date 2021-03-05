@@ -3,38 +3,67 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-    ~/.doom.d:
+    ~/.bashrc: bash/bashrc
+    ~/.bash_profile: bash/bash_profile
+    ~/.config/awesome: awesome
     ~/.config/compton: compton
-    ~/.emacs.d: doom-emacs
+    ~/.config/greenclip.cfg: greenclip.cfg
+    ~/.config/picom.conf: picom/picom.conf
+    ~/.doom.d:
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.screen.conf: screen/screen.conf
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources:
-    ~/.zshrc: zsh/zshrc
+    ~/.xinitrc:
+    ~/.zshrc: zsh/zshrc.zsh
+    ~/bin:
 
 - pacman:
     - awesome
-    - copyq
     - docker
     - emacs
+    - feh
     - firefox
     - firefox-ublock-origin
     - git
+    - gnome-control-center
     - inkscape
     - krita
+    - lxappearance
     - mopidy
+    - network-manager
+    - network-manager-applet
+    - openssh
     - ranger
     - rofi
     - s3cmd
     - tmux
     - zsh
 
+    - adobe-source-code-pro-fonts
+    - adobe-source-han-sans-otc-fonts
+    - adobe-source-han-serif-otc-fonts
+    - adobe-source-sans-pro-fonts
+    - noto-fonts
+    - ttf-anonymous-pro
+    - ttf-bitstream-vera
+    - ttf-croscore
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-freefont
+    - ttf-liberation
+    - ttf-linux-libertine
+    - ttf-roboto
+    - ttf-ubuntu-font-family
+
 - pacaur:
+    - asdf-vm
     - nerd-fonts-complete
+    - rofi-greenclip
     - slack-desktop
     - spotify
     - ttf-typicons
@@ -51,7 +80,6 @@
       url: https://github.com/asdf-vm/asdf-ruby
     - plugin: terraform
       url: https://github.com/Banno/asdf-hashicorp
-
 - shell:
     - description: Installing submodules
       command: git submodule update --init --recursive

@@ -1,0 +1,220 @@
+* Getting started
+If you have not installed DOOM Emacs but would like to:
+#+BEGIN_EXAMPLE
+git clone https://github.com/nmartin84/.doom.d.git ~/.doom.d
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+END_EXAMPLE
+
+Otherwise, backup your existing DOOM private config and run:
+#+BEGIN_EXAMPLE
+mv ~/.doom.d ~/.doom.d_backup
+git clone https://github.com/nmartin84/.doom.d.git ~/.doom.d
+~/.emacs.d/bin/doom refresh
+#+END_EXAMPLE
+
+This repo uses a literate configuration, with basic settings in ~./init.el~, ~./packags.el~, the content of ~./config.el~ will be generated
+from the Emacs Lisp code blocks in ~config.org~. This readme file gets created when exporting ~config.org~ to markdown.
+
+* Misc
+Enable lexical binding.
+#+BEGIN_SRC emacs-lisp
+;;; -*- lexical-binding: t; -*-
+#+END_SRC
+
+* Pretty
+** Fonts
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "SauceCodePro Nerd Font" :size 14))
+#+END_SRC
+
+** Theme
+*** Main Theme
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'ewal-doom-one)
+;; (setq doom-theme 'doom-solarized-light)
+#+END_SRC
+
+*** Dark Theme Toggle
+#+BEGIN_SRC emacs-lisp
+(setq light-theme 'doom-solarized-light)
+
+(setq my/light-theme light-theme
+      my/dark-theme doom-theme)
+
+(defun my/toggle-dark-theme ()
+  (interactive)
+  (if (eq my/dark-theme doom-theme)
+      (load-theme my/light-theme t)
+    (load-theme doom-theme t)))
+
+(map! :leader
+      (:prefix-map ("t" . "toggle")
+       :desc "Dark theme" "d" #'my/toggle-dark-theme))
+
+(load-theme doom-theme t)
+#+END_SRC
+
+** Dashboard
+#+BEGIN_SRC emacs-lisp
+(setq +doom-dashboard-banner-padding '(0 . 0)
+      +doom-dashboard-banner-file "default.png"
+      +doom-dashboard-banner-dir "~/.doom.d/banners/"
+      +doom-dashboard-functions
+       '(doom-dashboard-widget-banner
+         doom-dashboard-widget-shortmenu))
+#+END_SRC
+* Environment
+** User Settings
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name    "Russell Smith"
+      user-mail-address "russ@bashme.org")
+
+(global-auto-revert-mode t)
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2 indent-tabs-mode nil)
+(setq backup-by-copying t) ; Stop shinanigans with links
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq +workspaces-on-switch-project-behavior t)
+#+END_SRC
+
+* Module Settings
+** Company
+#+BEGIN_SRC emacs-lisp
+(require 'company)
+(setq company-idle-delay 0.2
+      company-minimum-prefix-length 2)
+(global-company-mode t)
+#+END_SRC
+** Deft
+#+BEGIN_SRC emacs-lisp
+(setq deft-directory "~/Dropbox/Notes/org")
+(setq deft-current-sort-method 'title)
+#+END_SRC
+** OrgMode
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/Dropbox/Notes/org/"
+      org-capture-todo-file "inbox.org"
+      org-agenda-files (ignore-errors (directory-files "~/Dropbox/Notes/org/" t "\\.org$" t))
+      org-agenda-skip-scheduled-if-done t
+      org-tags-column -80
+      org-archive-location "~/Dropbox/Notes/org/archive/%s_archive::")
+
+(after! org
+  (setq org-todo-keywords
+    '((sequence "TODO(t)" "NEXT(n!)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+
+  (after! org (setq org-agenda-dim-blocked-tasks t
+                    org-agenda-use-time-grid t
+                    org-agenda-hide-tags-regexp ":\\w+:"
+                    org-agenda-compact-blocks t
+                    org-agenda-block-separator nil
+                    org-agenda-skip-scheduled-if-done t
+                    org-agenda-skip-deadline-if-done t
+                    org-enforce-todo-checkbox-dependencies nil
+                    org-habit-show-habits t))
+
+  (setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))))
+
+(load-library "find-lisp")
+(after! org (setq org-agenda-files
+                  (find-lisp-find-files "~/Dropbox/Notes/org/" "\.org$")))
+
+(add-hook 'org-mode-hook (lambda ()
+  (display-line-numbers-mode -1)
+  (hide-mode-line-mode -1)
+))
+#+END_SRC
+
+** Ruby
+#+BEGIN_SRC emacs-lisp
+(require 'rubocopfmt)
+(add-hook 'ruby-mode-hook #'rubocopfmt-mode)
+(use-package rubocopfmt
+  :hook
+  (enh-ruby-mode . rubocopfmt-mode))
+#+END_SRC
+
+** Roam
+#+BEGIN_SRC emacs-lisp
+(map! :leader :desc "Org-Roam-Today" "m m t" #'org-roam-today)
+;; (use-package company-org-roam
+;;   :when (featurep! :completion company)
+;;   :after org-roam
+;;   :config
+;;   (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+#+END_SRC
+
+** CSS
+#+BEGIN_SRC emacs-lisp
+(use-package! lsp-tailwindcss)
+#+END_SRC
+
+** Javascript
+#+BEGIN_SRC emacs-lisp
+(add-hook 'vue-mode-hook #'lsp!)
+(setq-hook! 'web-mode-hook +format-with 'prettier-prettify)
+
+;; Trying to fix indentation in the different blocks
+;; https://github.com/AdamNiederer/vue-mode/issues/100#issuecomment-571819507
+(setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+(setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+
+;; Disables the coloring behind the different blocks in single file components
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil)))
+
+;; (require 'eglot)
+;; (require 'web-mode)
+;; (define-derived-mode genehack-vue-mode web-mode "ghVue"
+;;   "A major mode derived from web-mode, for editing .vue files with LSP support.")
+;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . genehack-vue-mode))
+;; (add-hook 'genehack-vue-mode-hook #'eglot-ensure)
+;; (add-to-list 'eglot-server-programs '(genehack-vue-mode "/home/russ/.asdf/shims/vls"))
+#+END_SRC
+
+#+RESULTS:
+| lambda  | nil | (set-face-background 'mmm-default-submode-face nil) |                                                     |
+| closure | (t) | nil                                                 | (set-face-background 'mmm-default-submode-face nil) |
+
+** Magit
+#+BEGIN_SRC emacs-lisp
+(setq +magit-hub-features t)
+#+END_SRC
+** Projectile
+#+BEGIN_SRC emacs-lisp
+(projectile-add-known-project "~/Dropbox/Notes/org")
+(setq projectile-project-search-path '("~/Projects/"))
+(setq projectile-globally-ignored-file-suffixes '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
+(setq projectile-globally-ignored-directories '(".git" "node_modules" "__pycache__" ".vs"))
+(setq projectile-globally-ignored-files '(".DS_Store"))
+#+END_SRC
+* Custom Functions
+#+BEGIN_SRC emacs-lisp
+(defun my/create-org-frame ()
+  "Create a new frame running org."
+  (select-frame
+   (make-frame '((name . "Org"))))
+  (my-new-daily-review))
+
+(defun my-new-daily-review ()
+  "Create Org file from skeleton file with current time as name."
+  (interactive)
+  (let ((template (concat "~/Dropbox/Notes/org/templates/daily-review.org"))
+	(filename (format-time-string "~/Dropbox/Notes/org/%Y-%m-%d.org")))
+    (if (file-exists-p filename)
+      (find-file filename)
+      (and (copy-file template filename)
+           (find-file filename)))))
+#+END_SRC
+* Leftovers

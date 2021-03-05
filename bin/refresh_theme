@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]
+then
+  # wal --vte -i ~/Dropbox/Wallpaper/unsplash/Widescreen\ Wallpapers/ -n 
+  wal --vte -i ~/Dropbox/Wallpaper/distrotube/ -n 
+else
+  wal --vte -i "$1"
+fi
+
+feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"  
+
+echo 'awesome.restart()' | awesome-client
